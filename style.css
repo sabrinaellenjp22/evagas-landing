@@ -675,7 +675,11 @@ ul, ol { list-style: none; }
 
 /* Mobile */
 @media (max-width: 640px) {
-  .container { padding: 0 16px; }
+  .container { padding: 0 20px; }
+
+  /* Buttons: allow wrapping so long labels never force the button past
+     the container edge (was causing full-width buttons to overflow). */
+  .btn { white-space: normal; text-align: center; }
 
   /* Header */
   .header { padding: 14px 0; }
@@ -687,11 +691,11 @@ ul, ol { list-style: none; }
 
   /* Hero */
   .hero { padding: 12px 0 40px; }
-  .hero__text { margin-top: 20px; }
+  .hero__art { order: -1; margin-bottom: 24px; }
+  .hero__text { margin-top: 0; }
   .hero__text h1 { font-size: 27px; line-height: 1.22; }
   .hero__text p { font-size: 15px; margin-bottom: 22px; }
   .hero__cta { flex-direction: column; align-items: stretch; }
-  .hero__cta .btn { text-align: center; }
   .hero__partners { grid-template-columns: auto 1fr; row-gap: 14px; }
   .hero__partners-brands { grid-column: 1 / -1; justify-self: start; }
 
@@ -699,7 +703,6 @@ ul, ol { list-style: none; }
   .platform__panel { padding: 20px; border-radius: 24px; }
   .platform__content h2 { font-size: 22px; }
   .platform__cta { flex-direction: column; align-items: stretch; }
-  .platform__cta .btn { text-align: center; }
   .platform__head { flex-wrap: wrap; gap: 10px; }
 
   /* Steps */
@@ -708,10 +711,43 @@ ul, ol { list-style: none; }
 
   /* Pricing */
   .pricing { padding: 50px 0; }
+  .pricing__head { gap: 8px; margin-bottom: 28px; }
   .pricing__head h2 { font-size: 24px; white-space: normal; }
-  .pricing__head-title { margin-bottom: 4px; }
-  .pricing__promo { font-size: clamp(6px, calc(2.05vw - 0.7px), 12.5px); margin: 0 auto; }
+  .pricing__head-title { margin-bottom: 0; }
+  .pricing__head p { padding-top: 0; }
   .pricing__art-cards { border-radius: 24px; }
+
+  /* Pricing promo: switch from absolute desktop layout to a normal-flow
+     stack — card, then vetor 1 (photo), then vetor 2 (bubble) — all
+     sitting on a solid blue card instead of the desktop backdrop image. */
+  .pricing__promo {
+    font-size: 16px;
+    width: 100%;
+    background: var(--blue-primary);
+    border-radius: 28px;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .pricing__promo-backdrop { display: none; }
+  .pricing__card {
+    position: static;
+    transform: none;
+    width: 100%;
+    left: auto;
+  }
+  .pricing__promo-extra {
+    position: static;
+    left: auto;
+    right: auto;
+    top: auto;
+    transform: none;
+    width: 100%;
+    gap: 16px;
+  }
+  .pricing__promo-photo { width: 100%; border-radius: 18px; }
+  .pricing__promo-bubble { width: 100%; margin-left: 0; }
 
   /* FAQ */
   .faq { padding: 50px 0; }
