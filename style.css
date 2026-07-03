@@ -31,6 +31,7 @@ body {
   overflow-x: hidden;
 }
 img { max-width: 100%; display: block; }
+.mobile-break { display: none; }
 .container { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
 a { text-decoration: none; color: inherit; }
 ul, ol { list-style: none; }
@@ -689,19 +690,28 @@ ul, ol { list-style: none; }
 
   /* Hero */
   .hero { padding: 12px 0 40px; }
-  .hero__art { order: -1; margin-bottom: 24px; }
-  .hero__text { margin-top: 0; }
+  .hero__inner { gap: 0; }
+  .hero__art { order: -1; margin-bottom: 10px; }
+  .hero__text { margin-top: 0; text-align: center; }
+  .hero__text .badge { margin-left: auto; margin-right: auto; }
   .hero__text h1 { font-size: 27px; line-height: 1.22; }
-  .hero__text p { font-size: 15px; margin-bottom: 22px; }
+  .hero__text p { font-size: 15px; margin-bottom: 22px; margin-left: auto; margin-right: auto; }
   .hero__cta { flex-direction: column; align-items: stretch; }
-  .hero__partners { grid-template-columns: auto 1fr; row-gap: 14px; }
-  .hero__partners-brands { grid-column: 1 / -1; justify-self: start; }
+  .hero__partners {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+  .hero__partners-brands { justify-content: center; }
 
   /* Platform */
   .platform__panel { padding: 20px; border-radius: 24px; }
   .platform__content h2 { font-size: 22px; }
   .platform__cta { flex-direction: column; align-items: stretch; }
-  .platform__head { flex-wrap: wrap; gap: 10px; }
+  .platform__head { flex-wrap: wrap; gap: 10px; align-items: center; }
+  .platform__head .badge { margin-bottom: 0; }
 
   /* Steps */
   .section-head h2 { font-size: 24px; }
@@ -744,8 +754,8 @@ ul, ol { list-style: none; }
     width: 100%;
     gap: 16px;
   }
-  .pricing__promo-photo { width: 100%; border-radius: 18px; }
-  .pricing__promo-bubble { width: 100%; margin-left: 0; }
+  .pricing__promo-photo { width: 86%; margin: 0 auto; border-radius: 18px; }
+  .pricing__promo-bubble { width: 109%; max-width: none; margin-left: -4.7%; }
 
   /* FAQ */
   .faq { padding: 50px 0; }
@@ -757,4 +767,6 @@ ul, ol { list-style: none; }
   .footer__inner { grid-template-columns: 1fr; gap: 28px; }
   .footer__brand p { max-width: none; }
   .footer__bottom { flex-direction: column; gap: 6px; text-align: center; }
+
+  .mobile-break { display: block; }
 }
