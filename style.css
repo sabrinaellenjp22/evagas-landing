@@ -548,9 +548,7 @@ ul, ol { list-style: none; }
 }
 .faq__intro img {
   width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  border-radius: var(--radius-md);
+  height: auto;
   margin-bottom: 14px;
   display: block;
 }
