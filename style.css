@@ -78,10 +78,6 @@ ul, ol { list-style: none; }
   margin-bottom: 20px;
   background: var(--white);
 }
-.badge__dot {
-  width: 8px; height: 8px; border-radius: 50%;
-  background: var(--green);
-}
 .badge--light {
   background: rgba(255,255,255,.15);
   border-color: rgba(255,255,255,.3);
@@ -164,9 +160,8 @@ ul, ol { list-style: none; }
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
-  align-items: start;
+  align-items: center;
 }
-.hero__text { margin-top: 36px; }
 .hero__text h1 {
   font-size: 46px;
   font-weight: 800;
@@ -180,20 +175,7 @@ ul, ol { list-style: none; }
   margin-bottom: 30px;
   max-width: 460px;
 }
-.hero__cta { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 36px; }
-.hero__partners {
-  display: grid;
-  grid-template-columns: auto minmax(0,1fr) auto;
-  align-items: center;
-  gap: 12px;
-  padding-top: 20px;
-  border-top: 1px solid var(--gray-100);
-}
-.hero__partners-logo { height: 40px; width: auto; display: block; flex-shrink: 0; }
-.hero__partners strong { display: block; font-size: 12px; font-weight: 700; white-space: nowrap; }
-.hero__partners span { font-size: 11px; color: var(--gray-500); white-space: nowrap; }
-.hero__partners-brands { display: flex; align-items: center; gap: 14px; justify-self: end; flex-shrink: 0; }
-.brand-logo { height: 22px; width: auto; }
+.hero__cta { display: flex; gap: 14px; flex-wrap: wrap; }
 .hero__art img { width: 100%; }
 
 /* Platform (blue panel) */
@@ -303,6 +285,114 @@ ul, ol { list-style: none; }
   text-wrap: pretty;
 }
 .platform__cta { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* Compare (antigo vs eVagas) */
+.compare { padding: 60px 0; }
+.compare__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.compare__col { border-radius: var(--radius-lg); padding: 32px 28px; }
+.compare__col--old { background: var(--gray-50); border: 1px solid var(--gray-100); }
+.compare__col--new { background: var(--navy); color: var(--white); }
+.compare__tag {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  margin-bottom: 18px;
+}
+.compare__col--old .compare__tag { color: #C73B3B; }
+.compare__col--new .compare__tag { color: var(--blue-light); }
+.compare__col ul { display: flex; flex-direction: column; gap: 14px; }
+.compare__col li { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; line-height: 1.4; }
+.compare__col--old li::before { content: "✕"; color: #C73B3B; font-weight: 700; flex-shrink: 0; }
+.compare__col--new li::before { content: "✓"; color: var(--blue-light); font-weight: 700; flex-shrink: 0; }
+
+/* Tools (Ferramentas do dia a dia) */
+.tools { padding: 60px 0; background: var(--gray-50); }
+.tools__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.tool-card {
+  position: relative;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  border: 1px solid var(--gray-100);
+  overflow: hidden;
+  transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease;
+}
+.tool-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--card-accent, var(--blue-primary));
+}
+.tool-card:hover { transform: translateY(-6px); box-shadow: 0 24px 40px -22px rgba(1,13,39,.18); }
+.tool-card--blue { --card-accent: var(--blue-mid); }
+.tool-card--green { --card-accent: var(--green); }
+.tool-card--orange { --card-accent: var(--orange); }
+.tool-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px; height: 48px;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--card-accent) 16%, white);
+  margin-bottom: 18px;
+  font-size: 22px;
+}
+.tool-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.tool-card p { font-size: 14.5px; color: var(--gray-500); line-height: 1.5; }
+
+/* Portal Público de Vagas */
+.portal { padding: 60px 0; }
+.portal__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.portal__mock-window {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--gray-100);
+  box-shadow: 0 30px 60px -30px rgba(1,13,39,.25);
+  overflow: hidden;
+}
+.portal__mock-bar { display: flex; gap: 6px; padding: 14px 16px; background: var(--gray-50); }
+.portal__mock-bar span { width: 10px; height: 10px; border-radius: 50%; background: var(--gray-100); }
+.portal__mock-body { padding: 24px; }
+.portal__mock-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.portal__mock-logo { width: 40px; height: 40px; border-radius: 10px; background: var(--blue-primary); flex-shrink: 0; }
+.portal__mock-brand strong { display: block; font-size: 15px; }
+.portal__mock-brand small { color: var(--gray-500); font-size: 12.5px; }
+.portal__mock-job {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  background: var(--gray-50);
+  margin-bottom: 10px;
+}
+.portal__mock-job strong { display: block; font-size: 14px; }
+.portal__mock-job small { color: var(--gray-500); font-size: 12px; }
+.portal__mock-job .btn { padding: 8px 16px; font-size: 12.5px; flex-shrink: 0; pointer-events: none; }
+.portal__content h2 { font-size: 32px; font-weight: 800; letter-spacing: -0.01em; margin: 4px 0 14px; }
+.portal__content > p { color: var(--gray-500); font-size: 16px; margin-bottom: 20px; max-width: 480px; }
+.portal__list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 26px; }
+.portal__list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14.5px; }
+.portal__list li::before { content: "✓"; color: var(--green); font-weight: 700; flex-shrink: 0; }
+
+/* Parceiros */
+.partners { padding: 50px 0; }
+.partners__row { display: flex; align-items: center; justify-content: center; gap: 32px; flex-wrap: wrap; }
+.partners__slot {
+  width: 140px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--gray-50);
+  border: 1px dashed var(--gray-100);
+}
 
 /* Steps */
 .steps { padding: 40px 0; background: var(--blue-bg); }
@@ -566,30 +656,56 @@ ul, ol { list-style: none; }
 .faq__list {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
 }
-.faq-item {
-  background: var(--white);
-  border-radius: var(--radius-md);
-  transition: transform .25s cubic-bezier(.2,.7,.2,1), box-shadow .25s ease;
+.faq__meta {
+  align-self: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255,255,255,.7);
+  margin-bottom: 4px;
 }
-.faq-item:hover { transform: translateY(-2px); box-shadow: 0 16px 32px -18px rgba(1,13,39,.35); }
+.faq-item { display: flex; flex-direction: column; }
 .faq-item__header {
   width: 100%;
   cursor: pointer;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: 10px;
   font-family: inherit;
-  font-weight: 700;
-  font-size: 15px;
-  color: var(--navy);
-  text-align: left;
   background: none;
   border: none;
-  padding: 20px 22px;
+  padding: 0;
 }
+.faq-item__avatar {
+  order: 1;
+  flex-shrink: 0;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  background: var(--navy);
+}
+.faq-item__avatar--a { background: var(--white); order: 2; }
+.faq-item__bubble {
+  order: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 82%;
+  background: var(--white);
+  color: var(--navy);
+  font-weight: 700;
+  font-size: 15px;
+  text-align: left;
+  border-radius: 18px 18px 18px 4px;
+  padding: 16px 20px;
+  transition: background .25s ease;
+}
+.faq-item__header:hover .faq-item__bubble { background: var(--gray-50); }
 .faq-item__icon {
   flex-shrink: 0;
   transition: transform .3s cubic-bezier(.2,.7,.2,1);
@@ -603,9 +719,22 @@ ul, ol { list-style: none; }
 }
 .faq-item.is-open .faq-item__panel { grid-template-rows: 1fr; }
 .faq-item__panel-inner { overflow: hidden; }
-.faq-item__panel p {
-  padding: 0 22px 20px;
-  color: var(--gray-500);
+.faq-item__answer-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 12px;
+}
+.faq-item__bubble--a {
+  order: 1;
+  max-width: 82%;
+  background: rgba(255,255,255,.14);
+  color: var(--white);
+  border: 1px solid rgba(255,255,255,.22);
+  border-radius: 18px 18px 4px 18px;
+  padding: 14px 18px;
+  font-weight: 400;
   font-size: 13.5px;
   line-height: 1.6;
 }
@@ -659,7 +788,7 @@ ul, ol { list-style: none; }
 
 /* Responsive */
 @media (max-width: 960px) {
-  .hero__inner, .platform__grid, .steps__grid, .faq__grid { grid-template-columns: 1fr; }
+  .hero__inner, .platform__grid, .steps__grid, .faq__grid, .compare__grid, .tools__grid, .portal__grid { grid-template-columns: 1fr; }
   .pricing__grid { grid-template-columns: 1fr; }
   .pricing__head { grid-template-columns: 1fr; }
   .nav-pill { display: none; }
@@ -692,19 +821,10 @@ ul, ol { list-style: none; }
   .hero { padding: 12px 0 40px; }
   .hero__inner { gap: 0; }
   .hero__art { order: -1; margin-bottom: 10px; }
-  .hero__text { margin-top: 0; text-align: center; }
-  .hero__text .badge { margin-left: auto; margin-right: auto; }
+  .hero__text { text-align: center; }
   .hero__text h1 { font-size: 27px; line-height: 1.22; }
   .hero__text p { font-size: 15px; margin-bottom: 22px; margin-left: auto; margin-right: auto; }
   .hero__cta { flex-direction: column; align-items: stretch; }
-  .hero__partners {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 12px;
-  }
-  .hero__partners-brands { justify-content: center; }
 
   /* Platform */
   .platform__panel { padding: 20px; border-radius: 24px; }
@@ -760,7 +880,7 @@ ul, ol { list-style: none; }
   /* FAQ */
   .faq { padding: 50px 0; }
   .faq__intro { padding: 20px; }
-  .faq-item__header { font-size: 14px; padding: 16px 18px; }
+  .faq-item__bubble, .faq-item__bubble--a { max-width: 88%; font-size: 14px; padding: 14px 16px; }
 
   /* Footer */
   .footer { padding: 44px 0 20px; }
