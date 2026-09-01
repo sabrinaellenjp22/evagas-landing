@@ -4,28 +4,6 @@ const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 30);
 window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
 
-// Hero title typewriter effect
-const heroTypewriter = document.getElementById('heroTypewriter');
-if (heroTypewriter) {
-  const fullText = heroTypewriter.textContent;
-  heroTypewriter.textContent = '';
-  heroTypewriter.classList.add('typewriter-cursor');
-  let i = 0;
-  const typeNext = () => {
-    heroTypewriter.textContent = fullText.slice(0, i);
-    i++;
-    if (i <= fullText.length) {
-      setTimeout(typeNext, 65);
-    } else {
-      heroTypewriter.classList.remove('typewriter-cursor');
-      document.querySelectorAll('.reveal--after-type').forEach(el => el.classList.add('in'));
-    }
-  };
-  setTimeout(typeNext, 950);
-} else {
-  document.querySelectorAll('.reveal--after-type').forEach(el => el.classList.add('in'));
-}
-
 // Hero image sphere: Fibonacci-distributed images on a draggable, auto-rotating 3D sphere
 const heroSphere = document.getElementById('heroSphere');
 if (heroSphere) {
@@ -39,8 +17,8 @@ if (heroSphere) {
     'assets/sphere-person-7.jpg',
   ];
   const COUNT = 60;
-  const RADIUS = 200;
-  const BASE_SIZE = 580 * 0.12;
+  const RADIUS = 90;
+  const BASE_SIZE = 260 * 0.12;
   const DRAG_SENSITIVITY = 0.5;
   const MAX_ROTATION_SPEED = 6;
   const MOMENTUM_DECAY = 0.96;
@@ -91,7 +69,7 @@ if (heroSphere) {
   let last = { x: 0, y: 0 };
 
   const render = () => {
-    const size = heroSphere.getBoundingClientRect().width || 460;
+    const size = heroSphere.offsetWidth || 260;
     const center = size / 2;
     const rotXRad = rotation.x * Math.PI / 180;
     const rotYRad = rotation.y * Math.PI / 180;
@@ -186,6 +164,23 @@ if (heroSphere) {
   requestAnimationFrame(tick);
 }
 
+// Hero sphere scroll parallax: starts expanded behind the text, shrinks to a compact globe above the title as the user scrolls
+const heroSphereLayer = document.getElementById('heroSphereLayer');
+const heroSection = document.getElementById('inicio');
+if (heroSphereLayer && heroSection) {
+  const EXPANDED_SCALE = 2.4;
+  const EXPANDED_TRANSLATE_Y = 174;
+  const onHeroScroll = () => {
+    const rect = heroSection.getBoundingClientRect();
+    const progress = Math.min(1, Math.max(0, -rect.top / (window.innerHeight * 0.6)));
+    const scale = EXPANDED_SCALE - progress * (EXPANDED_SCALE - 1);
+    const ty = EXPANDED_TRANSLATE_Y * (1 - progress);
+    heroSphereLayer.style.transform = `translateY(${ty}px) scale(${scale})`;
+  };
+  window.addEventListener('scroll', onHeroScroll, { passive: true });
+  onHeroScroll();
+}
+
 // Reveal on scroll
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => {
@@ -195,7 +190,7 @@ const io = new IntersectionObserver(entries => {
     }
   });
 }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-document.querySelectorAll('.reveal:not(.reveal--after-type)').forEach(el => io.observe(el));
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
 // Steps video switcher
 const stepsIframe = document.getElementById('stepsIframe');
