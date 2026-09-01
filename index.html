@@ -30,18 +30,23 @@
   <section class="hero" id="inicio">
     <div class="container hero__inner">
       <div class="hero__text">
-        <h1 class="reveal d1">Organização. Agilidade.<br>Resultados Certeiros.</h1>
-        <p class="reveal d2">Conectando talentos às oportunidades com a gestão de recrutamento e seleção que a sua empresa precisa.</p>
-        <div class="hero__cta reveal d3">
+        <h1 class="reveal d1">Todo o processo seletivo<br>reunido <span id="heroTypewriter">em um só lugar</span>.</h1>
+        <p class="reveal d2">Conecte-se a um universo de talentos e conduza cada etapa<br class="desktop-break"> da contratação com agilidade e controle.</p>
+        <div class="hero__cta reveal reveal--after-type d1">
           <a href="https://wa.me/5583993378336?text=Quero%20saber%20mais%20sobre%20o%20eVagas." target="_blank" rel="noopener" class="btn btn--primary btn--lg">Recrutamento Ilimitado a partir de<br class="mobile-break"> R$ 299/Mês.</a>
           <a href="#recursos" class="btn btn--light btn--lg">Saber mais</a>
         </div>
       </div>
-      <div class="hero__art reveal d2">
-        <img src="assets/imagem_1.png" alt="Fluxos de triagem e agendamento de entrevistas no eVagas">
+      <div class="hero__art reveal reveal--after-type d2">
+        <div class="hero-sphere" id="heroSphere"></div>
       </div>
     </div>
   </section>
+
+  <div class="hero-sphere-modal" id="heroSphereModal" hidden>
+    <button class="hero-sphere-modal__close" id="heroSphereModalClose" aria-label="Fechar">&times;</button>
+    <img id="heroSphereModalImg" src="" alt="">
+  </div>
 
   <section class="compare" id="comparativo">
     <div class="container">
@@ -150,38 +155,12 @@
   <section class="portal" id="portal-publico">
     <div class="container portal__grid">
       <div class="portal__mock reveal">
-        <div class="portal__mock-window">
-          <div class="portal__mock-bar"><span></span><span></span><span></span></div>
-          <div class="portal__mock-body">
-            <div class="portal__mock-brand">
-              <span class="portal__mock-logo"></span>
-              <div>
-                <strong>Vagas na Sua Empresa</strong>
-                <small>3 oportunidades abertas</small>
-              </div>
-            </div>
-            <div class="portal__mock-job">
-              <div>
-                <strong>Analista de RH Pleno</strong>
-                <small>São Paulo, SP · Híbrido · CLT</small>
-              </div>
-              <span class="btn btn--primary btn--sm">Candidatar-se</span>
-            </div>
-            <div class="portal__mock-job">
-              <div>
-                <strong>Desenvolvedor Front-end</strong>
-                <small>Remoto · PJ</small>
-              </div>
-              <span class="btn btn--primary btn--sm">Candidatar-se</span>
-            </div>
-            <div class="portal__mock-job">
-              <div>
-                <strong>Coordenador Comercial</strong>
-                <small>Recife, PE · Presencial · CLT</small>
-              </div>
-              <span class="btn btn--primary btn--sm">Candidatar-se</span>
-            </div>
+        <div class="laptop" id="portalTablet">
+          <div class="laptop__screen">
+            <div class="laptop__cam"></div>
+            <img src="assets/portal-screenshot.png" alt="Portal público de vagas eVagas">
           </div>
+          <div class="laptop__base"><span class="laptop__notch"></span></div>
         </div>
       </div>
       <div class="portal__content reveal d1">
@@ -294,14 +273,13 @@
   <section class="faq" id="faq">
     <div class="container faq__grid">
       <div class="faq__intro reveal">
-        <img src="assets/faq-photo.png" alt="Perguntas frequentes eVagas">
         <h2>Perguntas Frequentes</h2>
         <p>Tire suas principais dúvidas sobre o eVagas e descubra como nossa plataforma pode transformar seu processo de recrutamento.</p>
+        <img src="assets/faq-photo.png" alt="Perguntas frequentes eVagas">
         <span class="faq__cta-label">Não encontrou a resposta que procurava?</span>
         <a href="https://wa.me/5583993378336?text=Quero%20saber%20mais%20sobre%20o%20eVagas." target="_blank" rel="noopener" class="btn btn--dark btn--block">Fale com nossos especialistas</a>
       </div>
       <div class="faq__list">
-        <span class="faq__meta reveal">💬 Respostas rápidas, direto ao ponto</span>
         <div class="faq-item reveal d1 is-open">
           <button class="faq-item__header" aria-expanded="true">
             <span class="faq-item__bubble">Para que tipo de empresa o eVagas é indicado?<svg class="faq-item__icon" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
@@ -310,7 +288,7 @@
           <div class="faq-item__panel">
             <div class="faq-item__panel-inner">
               <div class="faq-item__answer-row">
-                <span class="faq-item__avatar faq-item__avatar--a">💬</span>
+                <img class="faq-item__avatar faq-item__avatar--a" src="assets/faq-answer-icon.svg" alt="">
                 <p class="faq-item__bubble faq-item__bubble--a">O eVagas é para qualquer empresa, independente do porte. Times de RH enxutos encontram uma plataforma simples de operar desde o primeiro dia, e operações com processos seletivos em maior volume contam com etapas configuráveis, indicadores por vaga e banco de talentos para dar conta da escala.</p>
               </div>
             </div>
@@ -324,7 +302,7 @@
           <div class="faq-item__panel">
             <div class="faq-item__panel-inner">
               <div class="faq-item__answer-row">
-                <span class="faq-item__avatar faq-item__avatar--a">💬</span>
+                <img class="faq-item__avatar faq-item__avatar--a" src="assets/faq-answer-icon.svg" alt="">
                 <p class="faq-item__bubble faq-item__bubble--a">Não! O eVagas possui interface intuitiva e fácil de usar. Qualquer pessoa da equipe de RH consegue cadastrar vagas, gerenciar candidatos e acompanhar o processo seletivo sem necessidade de treinamento técnico avançado.</p>
               </div>
             </div>
@@ -338,7 +316,7 @@
           <div class="faq-item__panel">
             <div class="faq-item__panel-inner">
               <div class="faq-item__answer-row">
-                <span class="faq-item__avatar faq-item__avatar--a">💬</span>
+                <img class="faq-item__avatar faq-item__avatar--a" src="assets/faq-answer-icon.svg" alt="">
                 <p class="faq-item__bubble faq-item__bubble--a">Sim! O eVagas oferece personalização completa (Tenant), permitindo que você adapte o painel e o portal público de vagas com as cores, logotipo e identidade visual da sua empresa, proporcionando uma experiência profissional e alinhada com sua marca.</p>
               </div>
             </div>
@@ -352,7 +330,7 @@
           <div class="faq-item__panel">
             <div class="faq-item__panel-inner">
               <div class="faq-item__answer-row">
-                <span class="faq-item__avatar faq-item__avatar--a">💬</span>
+                <img class="faq-item__avatar faq-item__avatar--a" src="assets/faq-answer-icon.svg" alt="">
                 <p class="faq-item__bubble faq-item__bubble--a">O Banco de Talentos centraliza todos os candidatos que já passaram por seus processos seletivos. Isso permite reaproveitar perfis qualificados em futuras oportunidades, economizando tempo e recursos na busca por novos talentos.</p>
               </div>
             </div>
@@ -366,7 +344,7 @@
           <div class="faq-item__panel">
             <div class="faq-item__panel-inner">
               <div class="faq-item__answer-row">
-                <span class="faq-item__avatar faq-item__avatar--a">💬</span>
+                <img class="faq-item__avatar faq-item__avatar--a" src="assets/faq-answer-icon.svg" alt="">
                 <p class="faq-item__bubble faq-item__bubble--a">Toda a comunicação acontece dentro da própria plataforma, sem depender de WhatsApp, e-mail externo ou outras ferramentas. Você configura mensagens automáticas por etapa (candidatura recebida, avanço, aprovação, reprovação) e o candidato ainda conta com um canal direto para falar com o recrutador quando precisar.</p>
               </div>
             </div>
@@ -380,7 +358,7 @@
           <div class="faq-item__panel">
             <div class="faq-item__panel-inner">
               <div class="faq-item__answer-row">
-                <span class="faq-item__avatar faq-item__avatar--a">💬</span>
+                <img class="faq-item__avatar faq-item__avatar--a" src="assets/faq-answer-icon.svg" alt="">
                 <p class="faq-item__bubble faq-item__bubble--a">Sim! O eVagas tem um calendário integrado com visão por dia, semana, mês ou ano, filtro por tipo de entrevista (remota ou presencial) e destaque automático da sua próxima entrevista — sem precisar cruzar e-mails e agendas soltas.</p>
               </div>
             </div>
@@ -394,12 +372,28 @@
           <div class="faq-item__panel">
             <div class="faq-item__panel-inner">
               <div class="faq-item__answer-row">
-                <span class="faq-item__avatar faq-item__avatar--a">💬</span>
+                <img class="faq-item__avatar faq-item__avatar--a" src="assets/faq-answer-icon.svg" alt="">
                 <p class="faq-item__bubble faq-item__bubble--a">Sim! O eVagas gera um portal público de vagas com a identidade visual da sua empresa, onde o candidato vê localidade, modalidade, tipo de contrato e se candidata direto pela listagem, sem etapas extras.</p>
               </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <h1 class="reveal d1">Organização. Agilidade.<br>Resultados Certeiros.</h1>
+        <p class="reveal d2">Conectando talentos às oportunidades com a gestão de recrutamento e seleção que a sua empresa precisa.</p>
+        <div class="hero__cta reveal d3">
+          <a href="https://wa.me/5583993378336?text=Quero%20saber%20mais%20sobre%20o%20eVagas." target="_blank" rel="noopener" class="btn btn--primary btn--lg">Recrutamento Ilimitado a partir de<br class="mobile-break"> R$ 299/Mês.</a>
+          <a href="#recursos" class="btn btn--light btn--lg">Saber mais</a>
+        </div>
+      </div>
+      <div class="hero__art reveal d2">
+        <img src="assets/imagem_1.png" alt="Fluxos de triagem e agendamento de entrevistas no eVagas">
       </div>
     </div>
   </section>
