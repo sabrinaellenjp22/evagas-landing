@@ -99,6 +99,87 @@
     </div>
   </section>
 
+  <section class="sectors" id="setores">
+    <div class="container">
+      <div class="section-head">
+        <span class="badge badge--outline reveal">🧩 Soluções por segmento</span>
+        <h2 class="reveal d1">Feito para o seu setor</h2>
+      </div>
+      <ul class="sectors__list reveal d2" id="sectorsList">
+        <li class="sectors__item sectors__item--active sectors__item--industria" data-sector="industria" tabindex="0">
+          <div class="sectors__media"></div>
+          <div class="sectors__scrim"></div>
+          <span class="sectors__label">Indústria</span>
+          <div class="sectors__body">
+            <span class="sectors__icon">🏭</span>
+            <h3>Indústria</h3>
+            <p>Contrate operacionais e técnicos em volume sem perder controle do processo.</p>
+          </div>
+        </li>
+        <li class="sectors__item sectors__item--saude" data-sector="saude" tabindex="0">
+          <div class="sectors__media"></div>
+          <div class="sectors__scrim"></div>
+          <span class="sectors__label">Saúde</span>
+          <div class="sectors__body">
+            <span class="sectors__icon">🏥</span>
+            <h3>Saúde</h3>
+            <p>Triagem ágil para vagas clínicas e administrativas, com histórico completo do candidato.</p>
+          </div>
+        </li>
+        <li class="sectors__item sectors__item--varejo" data-sector="varejo" tabindex="0">
+          <div class="sectors__media"></div>
+          <div class="sectors__scrim"></div>
+          <span class="sectors__label">Varejo</span>
+          <div class="sectors__body">
+            <span class="sectors__icon">🛍️</span>
+            <h3>Varejo</h3>
+            <p>Recrutamento em massa para sazonalidade e alta rotatividade, sem planilha.</p>
+          </div>
+        </li>
+        <li class="sectors__item sectors__item--logistica" data-sector="logistica" tabindex="0">
+          <div class="sectors__media"></div>
+          <div class="sectors__scrim"></div>
+          <span class="sectors__label">Logística</span>
+          <div class="sectors__body">
+            <span class="sectors__icon">🚚</span>
+            <h3>Logística</h3>
+            <p>Preencha vagas operacionais rápido, com etapas configuráveis por função.</p>
+          </div>
+        </li>
+        <li class="sectors__item sectors__item--imobiliario" data-sector="imobiliario" tabindex="0">
+          <div class="sectors__media"></div>
+          <div class="sectors__scrim"></div>
+          <span class="sectors__label">Imobiliário</span>
+          <div class="sectors__body">
+            <span class="sectors__icon">🏢</span>
+            <h3>Imobiliário</h3>
+            <p>Do primeiro contato à contratação, tudo em um só painel.</p>
+          </div>
+        </li>
+        <li class="sectors__item sectors__item--tecnologia" data-sector="tecnologia" tabindex="0">
+          <div class="sectors__media"></div>
+          <div class="sectors__scrim"></div>
+          <span class="sectors__label">Tecnologia</span>
+          <div class="sectors__body">
+            <span class="sectors__icon">💻</span>
+            <h3>Tecnologia</h3>
+            <p>Banco de talentos reaproveitável para vagas técnicas recorrentes.</p>
+          </div>
+        </li>
+        <li class="sectors__item sectors__item--educacao" data-sector="educacao" tabindex="0">
+          <div class="sectors__media"></div>
+          <div class="sectors__scrim"></div>
+          <span class="sectors__label">Educação</span>
+          <div class="sectors__body">
+            <span class="sectors__icon">🎓</span>
+            <h3>Educação</h3>
+            <p>Contrate professores e equipe administrativa com processos organizados por unidade.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
   <section class="compare" id="comparativo">
     <div class="container">
       <div class="section-head">
@@ -115,7 +196,11 @@
             <li>Dados espalhados, difícil padronizar a avaliação</li>
           </ul>
         </div>
+        <div class="compare__arrow reveal d2" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </div>
         <div class="compare__col compare__col--new reveal d3">
+          <span class="compare__badge">Recomendado</span>
           <span class="compare__tag">Com eVagas</span>
           <ul>
             <li>Todo o processo centralizado em um único ambiente</li>
@@ -135,20 +220,31 @@
         <h2 class="reveal d1">Tudo que o seu RH precisa, num só lugar</h2>
       </div>
       <div class="tools__grid">
-        <div class="tool-card tool-card--blue reveal d1">
-          <span class="tool-card__icon">🗓️</span>
-          <h3>Calendário de Entrevistas</h3>
-          <p>Agenda centralizada por vaga, com visão por dia, semana, mês ou ano, filtro remoto x presencial e destaque automático da sua próxima entrevista.</p>
+        <div class="tools__cards">
+          <div class="tool-card reveal d1">
+            <span class="tool-card__icon">🗓️</span>
+            <div class="tool-card__body">
+              <h3>Calendário de Entrevistas</h3>
+              <p>Agenda centralizada por vaga, com visão por dia, semana, mês ou ano, filtro remoto x presencial e destaque automático da sua próxima entrevista.</p>
+            </div>
+          </div>
+          <div class="tool-card reveal d2">
+            <span class="tool-card__icon">💬</span>
+            <div class="tool-card__body">
+              <h3>Comunicação em um só lugar</h3>
+              <p>Mensagens automáticas por etapa e um canal direto entre candidato e recrutador, sem depender de WhatsApp ou e-mail externo.</p>
+            </div>
+          </div>
+          <div class="tool-card reveal d3">
+            <span class="tool-card__icon">📊</span>
+            <div class="tool-card__body">
+              <h3>Painel Administrativo</h3>
+              <p>Todas as vagas em um painel único, com indicadores de candidatos, contratados e reprovados, ações rápidas e busca para grandes volumes.</p>
+            </div>
+          </div>
         </div>
-        <div class="tool-card tool-card--green reveal d2">
-          <span class="tool-card__icon">💬</span>
-          <h3>Comunicação em um só lugar</h3>
-          <p>Mensagens automáticas por etapa e um canal direto entre candidato e recrutador, sem depender de WhatsApp ou e-mail externo.</p>
-        </div>
-        <div class="tool-card tool-card--orange reveal d3">
-          <span class="tool-card__icon">📊</span>
-          <h3>Painel Administrativo</h3>
-          <p>Todas as vagas em um painel único, com indicadores de candidatos, contratados e reprovados, ações rápidas e busca para grandes volumes.</p>
+        <div class="tools__art reveal d2">
+          <img src="assets/imagem_1.png" alt="Fluxos de triagem e agendamento de entrevistas no eVagas">
         </div>
       </div>
     </div>
@@ -207,12 +303,9 @@
   </section>
 
   <section class="partners" id="parceiros">
-    <div class="container">
-      <div class="section-head">
-        <span class="badge badge--outline reveal">Nossos Parceiros</span>
-        <h2 class="reveal d1">Empresas que já confiam no eVagas</h2>
-      </div>
-      <div class="partners__row reveal d2">
+    <div class="container partners__bar reveal">
+      <p class="partners__legend">Empresas que já confiam<br>no eVagas</p>
+      <div class="partners__row">
         <span class="partners__slot"></span>
         <span class="partners__slot"></span>
         <span class="partners__slot"></span>
@@ -380,22 +473,6 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="hero">
-    <div class="container hero__inner">
-      <div class="hero__text">
-        <h1 class="reveal d1">Organização. Agilidade.<br>Resultados Certeiros.</h1>
-        <p class="reveal d2">Conectando talentos às oportunidades com a gestão de recrutamento e seleção que a sua empresa precisa.</p>
-        <div class="hero__cta reveal d3">
-          <a href="https://wa.me/5583993378336?text=Quero%20saber%20mais%20sobre%20o%20eVagas." target="_blank" rel="noopener" class="btn btn--primary btn--lg">Recrutamento Ilimitado a partir de<br class="mobile-break"> R$ 299/Mês.</a>
-          <a href="#recursos" class="btn btn--light btn--lg">Saber mais</a>
-        </div>
-      </div>
-      <div class="hero__art reveal d2">
-        <img src="assets/imagem_1.png" alt="Fluxos de triagem e agendamento de entrevistas no eVagas">
       </div>
     </div>
   </section>

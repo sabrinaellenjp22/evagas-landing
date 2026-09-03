@@ -168,7 +168,7 @@ if (heroSphere) {
 const heroSphereLayer = document.getElementById('heroSphereLayer');
 const heroSection = document.getElementById('inicio');
 if (heroSphereLayer && heroSection) {
-  const EXPANDED_SCALE = 2.4;
+  const EXPANDED_SCALE = 2.6;
   const EXPANDED_TRANSLATE_Y = 174;
   const onHeroScroll = () => {
     const rect = heroSection.getBoundingClientRect();
@@ -203,6 +203,15 @@ stepButtons.forEach(btn => {
     }
     stepButtons.forEach(b => b.classList.remove('step--active'));
     btn.classList.add('step--active');
+  });
+});
+
+// Sectors expanding cards: click locks the active card (mobile can't hover)
+const sectorsItems = document.querySelectorAll('.sectors__item');
+sectorsItems.forEach(item => {
+  item.addEventListener('click', () => {
+    sectorsItems.forEach(i => i.classList.remove('sectors__item--active'));
+    item.classList.add('sectors__item--active');
   });
 });
 
