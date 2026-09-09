@@ -416,6 +416,8 @@ ul, ol { list-style: none; }
 
 /* Compare (antigo vs eVagas) */
 .compare { padding: 70px 0; background: #C9E0F2; }
+.compare .section-head { max-width: none; }
+.compare .section-head h2 { white-space: nowrap; }
 .compare__table {
   background: var(--white);
   border-radius: var(--radius-lg);
@@ -471,11 +473,23 @@ ul, ol { list-style: none; }
 
 /* Tools (Ferramentas do dia a dia) */
 .tools { padding: 60px 0; background: var(--gray-50); }
-.tools__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+.tools__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: stretch; }
 .tools__cards { display: flex; flex-direction: column; gap: 14px; }
 .tools__head { margin-bottom: 4px; }
 .tools__head h2 { font-size: 42px; font-weight: 800; line-height: 48px; letter-spacing: -0.01em; margin-top: 16px; }
-.tools__art img { width: 100%; }
+.tools__art { display: flex; }
+.tools__art-placeholder {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  border: 2px dashed var(--gray-100);
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray-500);
+  font-size: 14px;
+  font-weight: 600;
+}
 .tool-card {
   display: flex;
   align-items: center;
@@ -1134,6 +1148,7 @@ ul, ol { list-style: none; }
   /* Tools */
   .tools__grid { gap: 24px; }
   .tools__art { order: -1; margin-bottom: 10px; }
+  .tools__art-placeholder { min-height: 220px; }
 
   /* Platform */
   .platform__panel { padding: 20px; border-radius: 24px; }
@@ -1145,6 +1160,7 @@ ul, ol { list-style: none; }
   /* Steps */
   .section-head h2 { font-size: 24px; }
   .sectors .section-head h2 { font-size: 24px; white-space: normal; }
+  .compare .section-head h2 { white-space: normal; }
   .step { padding: 14px 16px; font-size: 14px; }
 
   /* Pricing */
