@@ -206,14 +206,79 @@ stepButtons.forEach(btn => {
   });
 });
 
-// Sectors expanding cards: click locks the active card (mobile can't hover)
-const sectorsItems = document.querySelectorAll('.sectors__item');
-sectorsItems.forEach(item => {
-  item.addEventListener('click', () => {
-    sectorsItems.forEach(i => i.classList.remove('sectors__item--active'));
-    item.classList.add('sectors__item--active');
+// Tools video placeholder: force a 1:1 square matching the menu column's height.
+// (grid align-items:stretch + aspect-ratio on a percentage height is circular and makes
+// the browser reflow to a different size each time the menu re-renders, so size it in JS instead.)
+const toolsCardsCol = document.querySelector('.tools__cards');
+const toolsArtBox = document.getElementById('toolsArt');
+if (toolsCardsCol && toolsArtBox) {
+  const syncToolsArtSize = () => {
+    const side = `${toolsCardsCol.offsetHeight}px`;
+    toolsArtBox.style.width = side;
+    toolsArtBox.style.height = side;
+  };
+  syncToolsArtSize();
+  window.addEventListener('resize', syncToolsArtSize);
+}
+
+// Tools menu: hover reveals the subtitle + swaps the looping video; click locks it (mobile can't hover)
+// Video only plays while the section is on screen, to avoid burning GPU/battery in the background.
+const toolsMenu = document.getElementById('toolsMenu');
+if (toolsMenu) {
+  const toolCards = [...toolsMenu.querySelectorAll('.tool-card')];
+  const toolsVideo = document.getElementById('toolsVideo');
+  const toolsCaption = document.getElementById('toolsArtCaption');
+  const defaultCard = toolCards.find(c => c.classList.contains('tool-card--active')) || toolCards[0];
+  let sectionVisible = false;
+
+  const setActive = card => {
+    toolCards.forEach(c => c.classList.toggle('tool-card--active', c === card));
+    const src = card.dataset.video;
+    if (!src) {
+      toolsVideo.hidden = true;
+      toolsCaption.hidden = false;
+      toolsCaption.textContent = `Vídeo — ${card.dataset.title}`;
+      return;
+    }
+    toolsCaption.hidden = true;
+    toolsVideo.hidden = false;
+    if (!toolsVideo.src.endsWith(src)) toolsVideo.src = src;
+    if (sectionVisible) toolsVideo.play().catch(() => {});
+  };
+
+  toolCards.forEach(card => {
+    card.addEventListener('mouseenter', () => setActive(card));
+    card.addEventListener('click', () => setActive(card));
   });
-});
+  toolsMenu.addEventListener('mouseleave', () => setActive(defaultCard));
+
+  new IntersectionObserver(([entry]) => {
+    sectionVisible = entry.isIntersecting;
+    if (sectionVisible) toolsVideo.play().catch(() => {});
+    else toolsVideo.pause();
+  }, { threshold: 0.1 }).observe(document.getElementById('ferramentas'));
+
+  setActive(defaultCard);
+}
+
+// Sectors expanding cards: hover reveals a card, mirrors the .tool-card pattern above.
+const sectorsList = document.getElementById('sectorsList');
+if (sectorsList) {
+  const sectorCards = [...sectorsList.querySelectorAll('.sectors__item')];
+  const defaultSectorCard = sectorCards.find(c => c.classList.contains('sectors__item--active')) || sectorCards[0];
+
+  const setActiveSector = card => {
+    sectorCards.forEach(c => c.classList.toggle('sectors__item--active', c === card));
+  };
+
+  sectorCards.forEach(card => {
+    card.addEventListener('mouseenter', () => setActiveSector(card));
+    card.addEventListener('click', () => setActiveSector(card));
+  });
+  sectorsList.addEventListener('mouseleave', () => setActiveSector(defaultSectorCard));
+
+  setActiveSector(defaultSectorCard);
+}
 
 // FAQ accordion (single open at a time)
 const faqItems = document.querySelectorAll('.faq-item');

@@ -118,9 +118,9 @@
 
   <section class="sectors" id="setores">
     <div class="container">
-      <div class="section-head">
-        <span class="badge badge--outline reveal">Soluções por segmento</span>
-        <h2 class="reveal d1">Feito para o seu setor</h2>
+      <div class="sectors__head reveal d1">
+        <span class="sectors__kick">Feito sob medida para o seu setor</span>
+        <img src="assets/logo-white.svg" alt="eVagas" class="logo sectors__head-logo">
       </div>
       <ul class="sectors__list reveal d2" id="sectorsList">
         <li class="sectors__item sectors__item--active sectors__item--industria" data-sector="industria" tabindex="0">
@@ -128,7 +128,6 @@
           <div class="sectors__scrim"></div>
           <span class="sectors__label">Indústria</span>
           <div class="sectors__body">
-            <span class="sectors__icon">🏭</span>
             <h3>Indústria</h3>
             <p>Contrate operacionais e técnicos em volume sem perder controle do processo.</p>
           </div>
@@ -138,7 +137,6 @@
           <div class="sectors__scrim"></div>
           <span class="sectors__label">Saúde</span>
           <div class="sectors__body">
-            <span class="sectors__icon">🏥</span>
             <h3>Saúde</h3>
             <p>Triagem ágil para vagas clínicas e administrativas, com histórico completo do candidato.</p>
           </div>
@@ -148,7 +146,6 @@
           <div class="sectors__scrim"></div>
           <span class="sectors__label">Varejo</span>
           <div class="sectors__body">
-            <span class="sectors__icon">🛍️</span>
             <h3>Varejo</h3>
             <p>Recrutamento em massa para sazonalidade e alta rotatividade, sem planilha.</p>
           </div>
@@ -158,7 +155,6 @@
           <div class="sectors__scrim"></div>
           <span class="sectors__label">Logística</span>
           <div class="sectors__body">
-            <span class="sectors__icon">🚚</span>
             <h3>Logística</h3>
             <p>Preencha vagas operacionais rápido, com etapas configuráveis por função.</p>
           </div>
@@ -168,7 +164,6 @@
           <div class="sectors__scrim"></div>
           <span class="sectors__label">Imobiliário</span>
           <div class="sectors__body">
-            <span class="sectors__icon">🏢</span>
             <h3>Imobiliário</h3>
             <p>Do primeiro contato à contratação, tudo em um só painel.</p>
           </div>
@@ -178,7 +173,6 @@
           <div class="sectors__scrim"></div>
           <span class="sectors__label">Tecnologia</span>
           <div class="sectors__body">
-            <span class="sectors__icon">💻</span>
             <h3>Tecnologia</h3>
             <p>Banco de talentos reaproveitável para vagas técnicas recorrentes.</p>
           </div>
@@ -188,12 +182,15 @@
           <div class="sectors__scrim"></div>
           <span class="sectors__label">Educação</span>
           <div class="sectors__body">
-            <span class="sectors__icon">🎓</span>
             <h3>Educação</h3>
             <p>Contrate professores e equipe administrativa com processos organizados por unidade.</p>
           </div>
         </li>
       </ul>
+      <div class="sectors__foot reveal d1">
+        <p class="sectors__intro">O eVagas conecta candidatos e recrutadores em um único painel, adaptado à rotina de cada segmento da indústria à tecnologia. Etapas, canais e critérios se ajustam ao seu setor, permitindo contratar com mais agilidade e precisão, sem perder o controle do processo em nenhuma etapa da seleção.</p>
+        <a href="https://wa.me/5583993378336?text=Quero%20saber%20mais%20sobre%20o%20eVagas." target="_blank" rel="noopener" class="btn btn--dark sectors__foot-cta">Saber mais</a>
+      </div>
     </div>
   </section>
 
@@ -229,38 +226,63 @@
   </section>
 
   <section class="tools" id="ferramentas">
+    <img src="assets/tools-decor.svg" alt="" class="tools__decor" aria-hidden="true">
     <div class="container">
       <div class="tools__grid">
         <div class="tools__cards">
           <div class="tools__head">
-            <span class="badge badge--outline reveal">Ferramentas do dia a dia</span>
-            <h2 class="reveal d1">Tudo que o seu RH precisa,<br>num só lugar</h2>
+            <span class="badge badge--dark reveal">Tudo que o seu RH precisa, num só lugar</span>
           </div>
-          <div class="tool-card reveal d1">
-            <span class="tool-card__icon">🗓️</span>
-            <div class="tool-card__body">
-              <h3>Calendário de Entrevistas</h3>
-              <p>Agenda centralizada por vaga, com visão por dia, semana, mês ou ano, filtro remoto x presencial e destaque automático da sua próxima entrevista.</p>
-            </div>
-          </div>
-          <div class="tool-card reveal d2">
-            <span class="tool-card__icon">💬</span>
-            <div class="tool-card__body">
-              <h3>Comunicação em um só lugar</h3>
-              <p>Mensagens automáticas por etapa e um canal direto entre candidato e recrutador, sem depender de WhatsApp ou e-mail externo.</p>
-            </div>
-          </div>
-          <div class="tool-card reveal d3">
-            <span class="tool-card__icon">📊</span>
-            <div class="tool-card__body">
-              <h3>Painel Administrativo</h3>
-              <p>Todas as vagas em um painel único, com indicadores de candidatos, contratados e reprovados, ações rápidas e busca para grandes volumes.</p>
-            </div>
+          <div class="tools__menu" id="toolsMenu">
+            <button type="button" class="tool-card tool-card--active reveal d1" data-video="assets/tool-painel-de-vagas.mp4" data-title="Painel de vagas">
+              <span class="tool-card__icon">📋</span>
+              <div class="tool-card__body">
+                <h3>Painel de vagas</h3>
+                <p>Todas as vagas abertas em um só lugar, com etapas, responsáveis e status atualizados em tempo real.</p>
+              </div>
+            </button>
+            <button type="button" class="tool-card reveal d1" data-video="assets/tool-perfil-e-etapas-do-candidato.mp4" data-title="Perfil e etapas do candidato">
+              <span class="tool-card__icon">🧑‍💼</span>
+              <div class="tool-card__body">
+                <h3>Perfil e etapas do candidato</h3>
+                <p>Histórico completo de cada candidato, com etapa atual, avaliações e documentos centralizados.</p>
+              </div>
+            </button>
+            <button type="button" class="tool-card reveal d2" data-video="assets/tool-calendario-de-entrevistas.mp4" data-title="Calendário de entrevistas">
+              <span class="tool-card__icon">🗓️</span>
+              <div class="tool-card__body">
+                <h3>Calendário de entrevistas</h3>
+                <p>Agenda centralizada por vaga, com visão por dia, semana, mês ou ano, filtro remoto x presencial e destaque automático da sua próxima entrevista.</p>
+              </div>
+            </button>
+            <button type="button" class="tool-card reveal d2" data-video="assets/tool-mensagens-e-notificacoes.mp4" data-title="Mensagens e notificações">
+              <span class="tool-card__icon">💬</span>
+              <div class="tool-card__body">
+                <h3>Mensagens e notificações</h3>
+                <p>E-mails personalizáveis e programáveis por etapa, com canal direto entre candidato e recrutador, sem depender de canais externos de comunicação.</p>
+              </div>
+            </button>
+            <button type="button" class="tool-card reveal d3" data-video="assets/tool-portal-do-candidato.mp4" data-title="Portal do candidato">
+              <span class="tool-card__icon">🌐</span>
+              <div class="tool-card__body">
+                <h3>Portal do candidato</h3>
+                <p>Portal próprio com a identidade da sua empresa, onde o candidato acompanha cada etapa do processo em tempo real.</p>
+              </div>
+            </button>
+            <button type="button" class="tool-card reveal d3" data-video="assets/tool-dashboard-gerencial.mp4" data-title="Dashboard gerencial">
+              <span class="tool-card__icon">📊</span>
+              <div class="tool-card__body">
+                <h3>Dashboard gerencial</h3>
+                <p>Indicadores de candidatos, contratados e reprovados por vaga, com ações rápidas e busca para grandes volumes.</p>
+              </div>
+            </button>
           </div>
         </div>
         <div class="tools__art reveal d2">
-          <div class="tools__art-placeholder" role="img" aria-label="Fluxos de triagem e agendamento de entrevistas no eVagas">
-            <span>Imagem</span>
+          <div class="tools__art-placeholder" id="toolsArt">
+            <video id="toolsVideo" muted loop autoplay playsinline hidden></video>
+            <span id="toolsArtCaption">Vídeo — Painel de vagas</span>
+            <a href="https://wa.me/5583993378336?text=Quero%20saber%20mais%20sobre%20o%20eVagas." target="_blank" rel="noopener" class="btn btn--dark btn--sm tools__art-cta">Ver na prática</a>
           </div>
         </div>
       </div>
