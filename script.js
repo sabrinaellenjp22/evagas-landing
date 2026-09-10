@@ -271,13 +271,25 @@ if (sectorsList) {
     sectorCards.forEach(c => c.classList.toggle('sectors__item--active', c === card));
   };
 
+  let sectorsHovering = false;
   sectorCards.forEach(card => {
     card.addEventListener('mouseenter', () => setActiveSector(card));
     card.addEventListener('click', () => setActiveSector(card));
   });
-  sectorsList.addEventListener('mouseleave', () => setActiveSector(defaultSectorCard));
+  sectorsList.addEventListener('mouseenter', () => { sectorsHovering = true; });
+  sectorsList.addEventListener('mouseleave', () => {
+    sectorsHovering = false;
+    setActiveSector(defaultSectorCard);
+  });
 
   setActiveSector(defaultSectorCard);
+
+  let sectorsAutoIndex = sectorCards.indexOf(defaultSectorCard);
+  setInterval(() => {
+    if (sectorsHovering) return;
+    sectorsAutoIndex = (sectorsAutoIndex + 1) % sectorCards.length;
+    setActiveSector(sectorCards[sectorsAutoIndex]);
+  }, 5000);
 }
 
 // FAQ accordion (single open at a time)
