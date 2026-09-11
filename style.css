@@ -488,11 +488,12 @@ ul, ol { list-style: none; }
 }
 
 @media (max-width: 720px) {
-  .compare__grid { display: flex; flex-direction: column; }
+  .compare { padding-bottom: 48px; }
+  .compare .compare__grid { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
   .compare__content { display: contents; }
-  .compare__content .badge { order: 1; }
+  .compare__content .badge { order: 1; margin-bottom: 0; }
   .compare__media { order: 2; display: flex; flex-direction: column; }
-  .compare__content h2 { order: 3; }
+  .compare__content h2 { order: 3; margin-bottom: 10px; line-height: 40px; }
   .compare__text { order: 4; }
   .compare__cta { order: 5; }
   .compare__photo { height: 320px; order: 5; }
@@ -584,7 +585,7 @@ ul, ol { list-style: none; }
   flex: 0 0 84px;
   background: var(--white);
 }
-.tool-card--active .tool-card__icon { background: var(--blue-tool); }
+.tool-card--active .tool-card__icon { background: color-mix(in srgb, var(--blue-tool) 20%, white); }
 .tool-card--active h3 { color: var(--navy); }
 .tool-card--active p { opacity: 1; max-height: 38px; margin: 2px 0 0; }
 .tool-item__panel { display: none; }
@@ -1195,6 +1196,17 @@ ul, ol { list-style: none; }
 @media (max-width: 960px) {
   .hero__inner, .platform__grid, .steps__grid, .faq__grid, .compare__grid, .tools__grid, .portal__grid { grid-template-columns: 1fr; }
   .compare__grid { gap: 20px; }
+
+  /* FAQ: "não encontrou a resposta" + CTA vêm depois da lista de perguntas */
+  .faq__grid { display: flex; flex-direction: column; }
+  .faq__intro { display: contents; }
+  .faq__intro h2 { order: 1; }
+  .faq__intro p { order: 2; }
+  .faq__intro img { order: 3; }
+  .faq__list { order: 4; }
+  .faq__cta-label { order: 5; margin-top: 24px; }
+  .faq__intro .btn { order: 6; }
+
   .pricing__grid { grid-template-columns: 1fr; }
   .pricing__head { grid-template-columns: 1fr; }
   .nav-pill { display: none; }
@@ -1209,7 +1221,7 @@ ul, ol { list-style: none; }
   /* Ferramentas (acordeon) */
   .tools__art { display: none; }
   .tool-item__panel--open { display: block; margin-top: 8px; }
-  .tool-item__panel .tools__art-placeholder { position: relative; width: 100%; aspect-ratio: 16 / 9; }
+  .tool-item__panel .tools__art-placeholder { position: relative; width: 100%; aspect-ratio: 3 / 2; }
 
   /* Setores */
   .sectors__head { flex-direction: column; align-items: flex-start; gap: 16px; }
