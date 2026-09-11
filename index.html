@@ -12,16 +12,21 @@
   <div class="container header__inner">
     <img src="assets/logo.svg" alt="eVagas" class="logo">
     <nav class="nav-pill">
-      <a href="#inicio">Conheça o eVagas</a>
+      <a href="#inicio">Início</a>
       <a href="#recursos">Recursos</a>
+      <a href="#setores">Setores</a>
+      <a href="#comparativo">Comparativo</a>
       <a href="#ferramentas">Ferramentas</a>
-      <a href="#portal-publico">Portal Público</a>
+      <a href="#portal-publico">Portal</a>
       <a href="#planos">Plano</a>
     </nav>
-    <div class="header__actions">
+    <div class="header__actions" id="headerActions">
       <a href="#" class="btn btn--primary btn--sm">Portal de Vagas</a>
       <a href="https://wa.me/5583993378336?text=Quero%20saber%20mais%20sobre%20o%20eVagas." target="_blank" rel="noopener" class="btn btn--light btn--sm">Fale conosco</a>
     </div>
+    <button type="button" class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="headerActions">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 
@@ -33,7 +38,7 @@
         <h1 class="reveal d1">Organização. Agilidade.<br>Resultados Certeiros.</h1>
         <p class="reveal d2">Conectando talentos às oportunidades com a gestão de recrutamento e seleção que a sua empresa precisa.</p>
         <div class="hero__cta reveal d3">
-          <a href="https://wa.me/5583993378336?text=Quero%20saber%20mais%20sobre%20o%20eVagas." target="_blank" rel="noopener" class="btn btn--primary btn--lg">Recrutamento Ilimitado a partir de<br class="mobile-break"> R$ 299/Mês.</a>
+          <a href="https://wa.me/5583993378336?text=Quero%20saber%20mais%20sobre%20o%20eVagas." target="_blank" rel="noopener" class="btn btn--primary btn--lg">Recrutamento Ilimitado a partir<br class="mobile-break"> de R$ 299/Mês.</a>
           <a href="#recursos" class="btn btn--light btn--lg">Saber mais</a>
         </div>
       </div>
@@ -84,7 +89,7 @@
           </div>
           <h2>A Plataforma completa<br class="mobile-break"> para você que busca<br>excelência no <strong>Processo Seletivo</strong></h2>
           <p>O eVagas é a plataforma online de gestão de recrutamento e seleção da <strong>Orbytis</strong>, que ajuda empresas a organizar e gerenciar todo o processo de contratação em um único ambiente.</p>
-          <div class="platform__features">
+          <div class="platform__features" id="platformFeatures">
             <div class="platform-card platform-card--blue reveal d1">
               <span class="platform-icon">✨</span>
               <h3>Triagem e Classificação<br>Automática</h3>
@@ -106,9 +111,13 @@
               <p>Personalize a plataforma com a identidade da sua empresa (Tenant).</p>
             </div>
           </div>
+          <div class="platform__nav" id="platformNav">
+            <button type="button" class="platform__nav-btn" data-dir="-1" aria-label="Card anterior">‹</button>
+            <button type="button" class="platform__nav-btn" data-dir="1" aria-label="Próximo card">›</button>
+          </div>
           <div class="platform__cta">
-            <a href="https://wa.me/5583993378336?text=Quero%20saber%20mais%20sobre%20o%20eVagas." target="_blank" rel="noopener" class="btn btn--outline-white">Recrutamento Ilimitado a partir de R$ 299/Mês.</a>
-            <a href="#como-comecar" class="btn btn--dark">Saber mais</a>
+            <a href="https://wa.me/5583993378336?text=Quero%20saber%20mais%20sobre%20o%20eVagas." target="_blank" rel="noopener" class="btn btn--outline-white">Assinar agora</a>
+            <a href="#como-comecar" class="btn btn--dark">Ver como começar</a>
           </div>
         </div>
       </div>
@@ -187,9 +196,13 @@
           </div>
         </li>
       </ul>
+      <div class="sectors__nav" id="sectorsNav">
+        <button type="button" class="sectors__nav-btn" data-dir="-1" aria-label="Setor anterior">‹</button>
+        <button type="button" class="sectors__nav-btn" data-dir="1" aria-label="Próximo setor">›</button>
+      </div>
       <div class="sectors__foot reveal d1">
         <p class="sectors__intro">O eVagas conecta candidatos e recrutadores em um único painel, adaptado à rotina de cada segmento da indústria à tecnologia. Etapas, canais e critérios se ajustam ao seu setor, permitindo contratar com mais agilidade e precisão, sem perder o controle do processo em nenhuma etapa da seleção.</p>
-        <a href="https://wa.me/5583993378336?text=Quero%20saber%20mais%20sobre%20o%20eVagas." target="_blank" rel="noopener" class="btn btn--dark sectors__foot-cta">Saber mais</a>
+        <a href="https://wa.me/5583993378336?text=Quero%20saber%20mais%20sobre%20o%20eVagas." target="_blank" rel="noopener" class="btn btn--dark sectors__foot-cta">Falar sobre o meu setor</a>
       </div>
     </div>
   </section>
@@ -232,7 +245,8 @@
       <div class="tools__grid">
         <div class="tools__cards">
           <div class="tools__head">
-            <span class="badge badge--dark reveal">Tudo que o seu RH precisa, num só lugar</span>
+            <span class="badge badge--dark reveal">Ferramentas do dia a dia</span>
+            <h2 class="reveal d1">Tudo que o seu RH precisa, num só lugar</h2>
           </div>
           <div class="tools__menu" id="toolsMenu">
             <button type="button" class="tool-card tool-card--active reveal d1" data-video="assets/tool-painel-de-vagas.mp4" data-title="Painel de vagas">
@@ -242,6 +256,7 @@
                 <p>Todas as vagas abertas em um só lugar, com etapas, responsáveis e status atualizados em tempo real.</p>
               </div>
             </button>
+            <div class="tool-item__panel"></div>
             <button type="button" class="tool-card reveal d1" data-video="assets/tool-perfil-e-etapas-do-candidato.mp4" data-title="Perfil e etapas do candidato">
               <span class="tool-card__icon">🧑‍💼</span>
               <div class="tool-card__body">
@@ -249,6 +264,7 @@
                 <p>Histórico completo de cada candidato, com etapa atual, avaliações e documentos centralizados.</p>
               </div>
             </button>
+            <div class="tool-item__panel"></div>
             <button type="button" class="tool-card reveal d2" data-video="assets/tool-calendario-de-entrevistas.mp4" data-title="Calendário de entrevistas">
               <span class="tool-card__icon">🗓️</span>
               <div class="tool-card__body">
@@ -256,6 +272,7 @@
                 <p>Agenda centralizada por vaga, com visão por dia, semana, mês ou ano, filtro remoto x presencial e destaque automático da sua próxima entrevista.</p>
               </div>
             </button>
+            <div class="tool-item__panel"></div>
             <button type="button" class="tool-card reveal d2" data-video="assets/tool-mensagens-e-notificacoes.mp4" data-title="Mensagens e notificações">
               <span class="tool-card__icon">💬</span>
               <div class="tool-card__body">
@@ -263,6 +280,7 @@
                 <p>E-mails personalizáveis e programáveis por etapa, com canal direto entre candidato e recrutador, sem depender de canais externos de comunicação.</p>
               </div>
             </button>
+            <div class="tool-item__panel"></div>
             <button type="button" class="tool-card reveal d3" data-video="assets/tool-portal-do-candidato.mp4" data-title="Portal do candidato">
               <span class="tool-card__icon">🌐</span>
               <div class="tool-card__body">
@@ -270,6 +288,7 @@
                 <p>Portal próprio com a identidade da sua empresa, onde o candidato acompanha cada etapa do processo em tempo real.</p>
               </div>
             </button>
+            <div class="tool-item__panel"></div>
             <button type="button" class="tool-card reveal d3" data-video="assets/tool-dashboard-gerencial.mp4" data-title="Dashboard gerencial">
               <span class="tool-card__icon">📊</span>
               <div class="tool-card__body">
@@ -277,6 +296,7 @@
                 <p>Indicadores de candidatos, contratados e reprovados por vaga, com ações rápidas e busca para grandes volumes.</p>
               </div>
             </button>
+            <div class="tool-item__panel"></div>
           </div>
         </div>
         <div class="tools__art reveal d2">
@@ -302,7 +322,7 @@
         </div>
       </div>
       <div class="portal__content reveal d1">
-        <span class="badge badge--outline">Portal Público de Vagas</span>
+        <span class="badge badge--outline">Candidatura em 1 clique</span>
         <h2>Uma vitrine só sua para atrair candidatos</h2>
         <p>O eVagas gera um portal público com a identidade visual da sua empresa (cores, logo e descrição), onde o candidato vê localidade, modalidade e tipo de contrato de cada vaga e se candidata direto pela listagem, sem etapas extras.</p>
         <ul class="portal__list">
@@ -310,7 +330,7 @@
           <li>Etapas do processo configuráveis por vaga, com total transparência para quem se candidata</li>
           <li>Candidatura em um clique, direto da listagem pública</li>
         </ul>
-        <a href="https://wa.me/5583993378336?text=Quero%20saber%20mais%20sobre%20o%20eVagas." target="_blank" rel="noopener" class="btn btn--dark">Saber mais</a>
+        <a href="https://wa.me/5583993378336?text=Quero%20saber%20mais%20sobre%20o%20eVagas." target="_blank" rel="noopener" class="btn btn--dark">Quero meu portal personalizado</a>
       </div>
     </div>
   </section>
@@ -318,7 +338,7 @@
   <section class="steps" id="como-comecar">
     <div class="container">
       <div class="section-head">
-        <span class="badge badge--outline reveal">Como começar 🚀</span>
+        <span class="badge badge--outline reveal">Comece em minutos 🚀</span>
         <h2 class="reveal d1">Desbloqueie Todo o Potencial da Nossa Ferramenta em 4 Passos</h2>
       </div>
       <div class="steps__grid">
@@ -344,7 +364,7 @@
 
   <section class="partners" id="parceiros">
     <div class="container partners__bar reveal">
-      <p class="partners__legend">Empresas que já confiam<br>no eVagas</p>
+      <p class="partners__legend">Empresas que já confiam <br>no eVagas</p>
       <div class="partners__row">
         <img class="partners__logo" src="assets/logo-orbytis.svg" alt="Orbytis">
         <img class="partners__logo" src="assets/logo-engeselt.svg" alt="Engeselt">
@@ -361,7 +381,7 @@
     <div class="container">
       <div class="pricing__head">
         <div class="pricing__head-title">
-          <span class="badge badge--outline reveal">Recrutamento <strong>sem Limites.</strong></span>
+          <span class="badge badge--outline reveal">Assinatura simples e mensal</span>
           <h2 class="reveal">Plano de Licença Mensal</h2>
         </div>
         <p class="reveal d1">Experimente um novo nível de controle e capacidade de publicação de vagas com nossa plataforma completa. Desde a gestão simultânea de diversos processos seletivos até o acesso a indicadores de desempenho confiáveis, nosso conjunto de ferramentas capacita seu RH a atingir resultados certeiros.</p>
@@ -538,10 +558,12 @@
     <div class="footer__col">
       <h4>Navegação</h4>
       <a href="#inicio">Home</a>
-      <a href="#comparativo">Comparativo</a>
       <a href="#recursos">Recursos</a>
+      <a href="#setores">Setores</a>
+      <a href="#comparativo">Comparativo</a>
       <a href="#ferramentas">Ferramentas</a>
       <a href="#portal-publico">Portal Público</a>
+      <a href="#como-comecar">Como Começar</a>
       <a href="#parceiros">Parceiros</a>
       <a href="#planos">Planos</a>
       <a href="#faq">Perguntas Frequentes</a>

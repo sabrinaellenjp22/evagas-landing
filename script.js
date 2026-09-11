@@ -4,6 +4,22 @@ const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 30);
 window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
 
+// Mobile header menu (hamburger)
+const menuToggle = document.getElementById('menuToggle');
+const headerActions = document.getElementById('headerActions');
+if (menuToggle && headerActions) {
+  const closeMenu = () => {
+    headerActions.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+  };
+  menuToggle.addEventListener('click', () => {
+    const isOpen = headerActions.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', String(isOpen));
+  });
+  headerActions.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+  window.addEventListener('resize', () => { if (window.innerWidth > 640) closeMenu(); });
+}
+
 // Hero image sphere: Fibonacci-distributed images on a draggable, auto-rotating 3D sphere
 const heroSphere = document.getElementById('heroSphere');
 if (heroSphere) {
@@ -213,9 +229,17 @@ const toolsCardsCol = document.querySelector('.tools__cards');
 const toolsArtBox = document.getElementById('toolsArt');
 if (toolsCardsCol && toolsArtBox) {
   const syncToolsArtSize = () => {
+    if (window.innerWidth <= 960) {
+      toolsCardsCol.style.height = '';
+      toolsArtBox.style.width = '';
+      toolsArtBox.style.height = '';
+      return;
+    }
+    toolsCardsCol.style.height = 'auto';
     const side = `${toolsCardsCol.offsetHeight}px`;
     toolsArtBox.style.width = side;
     toolsArtBox.style.height = side;
+    toolsCardsCol.style.height = side;
   };
   syncToolsArtSize();
   window.addEventListener('resize', syncToolsArtSize);
@@ -226,9 +250,12 @@ if (toolsCardsCol && toolsArtBox) {
 const toolsMenu = document.getElementById('toolsMenu');
 if (toolsMenu) {
   const toolCards = [...toolsMenu.querySelectorAll('.tool-card')];
+  const toolPanels = toolCards.map(card => card.nextElementSibling);
+  const toolsArtHome = document.querySelector('.tools__art');
   const toolsVideo = document.getElementById('toolsVideo');
   const toolsCaption = document.getElementById('toolsArtCaption');
   const defaultCard = toolCards.find(c => c.classList.contains('tool-card--active')) || toolCards[0];
+  const isMobileLayout = () => window.innerWidth <= 960;
   let sectionVisible = false;
 
   const setActive = card => {
@@ -246,11 +273,32 @@ if (toolsMenu) {
     if (sectionVisible) toolsVideo.play().catch(() => {});
   };
 
-  toolCards.forEach(card => {
-    card.addEventListener('mouseenter', () => setActive(card));
-    card.addEventListener('click', () => setActive(card));
+  // Mobile: accordion — each button's preview opens in a panel right below it.
+  const toolsArtBox = document.getElementById('toolsArt');
+  let mobileOpenIndex = toolCards.indexOf(defaultCard);
+  const syncAccordion = () => {
+    if (isMobileLayout()) {
+      toolPanels.forEach((panel, i) => {
+        const isOpen = i === mobileOpenIndex;
+        panel.classList.toggle('tool-item__panel--open', isOpen);
+        if (isOpen) panel.appendChild(toolsArtBox);
+      });
+    } else {
+      toolPanels.forEach(panel => panel.classList.remove('tool-item__panel--open'));
+      toolsArtHome.appendChild(toolsArtBox);
+    }
+  };
+
+  toolCards.forEach((card, i) => {
+    card.addEventListener('mouseenter', () => { if (!isMobileLayout()) setActive(card); });
+    card.addEventListener('click', () => {
+      setActive(card);
+      mobileOpenIndex = i;
+      syncAccordion();
+    });
   });
-  toolsMenu.addEventListener('mouseleave', () => setActive(defaultCard));
+
+  window.addEventListener('resize', syncAccordion);
 
   new IntersectionObserver(([entry]) => {
     sectionVisible = entry.isIntersecting;
@@ -259,6 +307,7 @@ if (toolsMenu) {
   }, { threshold: 0.1 }).observe(document.getElementById('ferramentas'));
 
   setActive(defaultCard);
+  syncAccordion();
 }
 
 // Sectors expanding cards: hover reveals a card, mirrors the .tool-card pattern above.
@@ -290,6 +339,60 @@ if (sectorsList) {
     sectorsAutoIndex = (sectorsAutoIndex + 1) % sectorCards.length;
     setActiveSector(sectorCards[sectorsAutoIndex]);
   }, 5000);
+
+  // Sectors carousel (mobile only: 1 card at a time, auto-advances every 5s)
+  const sectorsNav = document.getElementById('sectorsNav');
+  if (sectorsNav) {
+    let sectorsCarouselIndex = 0;
+    let sectorsCarouselTimer;
+
+    const goToSectorCard = i => {
+      sectorsCarouselIndex = (i + sectorCards.length) % sectorCards.length;
+      sectorsList.scrollTo({ left: sectorCards[sectorsCarouselIndex].offsetLeft, behavior: 'smooth' });
+    };
+
+    const restartSectorsCarouselTimer = () => {
+      clearInterval(sectorsCarouselTimer);
+      sectorsCarouselTimer = setInterval(() => goToSectorCard(sectorsCarouselIndex + 1), 4000);
+    };
+
+    sectorsNav.addEventListener('click', e => {
+      const btn = e.target.closest('.sectors__nav-btn');
+      if (!btn) return;
+      goToSectorCard(sectorsCarouselIndex + Number(btn.dataset.dir));
+      restartSectorsCarouselTimer();
+    });
+
+    restartSectorsCarouselTimer();
+  }
+}
+
+// Platform features carousel (mobile only: 1 card at a time, auto-advances every 2s)
+const platformFeatures = document.getElementById('platformFeatures');
+const platformNav = document.getElementById('platformNav');
+if (platformFeatures && platformNav) {
+  const platformCards = [...platformFeatures.children];
+  let platformIndex = 0;
+  let platformTimer;
+
+  const goToPlatformCard = i => {
+    platformIndex = (i + platformCards.length) % platformCards.length;
+    platformFeatures.scrollTo({ left: platformCards[platformIndex].offsetLeft, behavior: 'smooth' });
+  };
+
+  const restartPlatformTimer = () => {
+    clearInterval(platformTimer);
+    platformTimer = setInterval(() => goToPlatformCard(platformIndex + 1), 5000);
+  };
+
+  platformNav.addEventListener('click', e => {
+    const btn = e.target.closest('.platform__nav-btn');
+    if (!btn) return;
+    goToPlatformCard(platformIndex + Number(btn.dataset.dir));
+    restartPlatformTimer();
+  });
+
+  restartPlatformTimer();
 }
 
 // FAQ accordion (single open at a time)
