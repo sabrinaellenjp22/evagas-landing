@@ -808,7 +808,7 @@ ul, ol { list-style: none; }
 }
 
 /* Steps */
-.steps { padding: 40px 0; background: var(--blue-bg); }
+.steps { padding: 40px 0; background: var(--blue-bg); display: none; } /* oculta ate gravarmos os videos - reative removendo o display:none */
 .section-head { text-align: center; max-width: 640px; margin: 0 auto 32px; }
 .section-head h2 {
   font-size: 32px;
@@ -1196,11 +1196,12 @@ ul, ol { list-style: none; }
 @media (max-width: 960px) {
   .hero__inner, .platform__grid, .steps__grid, .faq__grid, .compare__grid, .tools__grid, .portal__grid { grid-template-columns: 1fr; }
   .compare__grid { gap: 20px; }
+  .portal__content h2 { font-size: 24px; line-height: 32px; }
 
   /* FAQ: "não encontrou a resposta" + CTA vêm depois da lista de perguntas */
-  .faq__grid { display: flex; flex-direction: column; }
+  .faq__grid { display: flex; flex-direction: column; gap: 0; }
   .faq__intro { display: contents; }
-  .faq__intro h2 { order: 1; }
+  .faq__intro h2 { order: 1; font-size: 24px; line-height: 32px; }
   .faq__intro p { order: 2; }
   .faq__intro img { order: 3; }
   .faq__list { order: 4; }
